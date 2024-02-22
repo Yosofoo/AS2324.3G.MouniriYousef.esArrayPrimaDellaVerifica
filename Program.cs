@@ -12,19 +12,31 @@
             double media = 0;
             double min = 0; 
             double max = 0;
-            Console.WriteLine("Che operazione vuoi eseguire:");
-            Console.WriteLine("1: Calcolo della media, del valore minimo e massimo tra i pesi");
-            Console.WriteLine("2: Ordinamento dei pesi e età in ordine decrescente");
-            Statistiche(ref pesi, ref media, ref min, ref max);
-            Console.WriteLine($"La media dei pesi è {media}, il valore minimo è {min} e il valore massimo {max}");
-
-            Ordina(ref pesi, ref eta);
-            for (int i = 0; i < dim; i++)
+            int scelta;
+            do
             {
-                Console.WriteLine($"peso {i + 1}: {pesi[i]}");
-                Console.WriteLine($"età {i + 1}: {eta[i]}\n");
-            }
+                Console.WriteLine("1: Calcolo della media, del valore minimo e massimo tra i pesi");
+                Console.WriteLine("2: Ordinamento dei pesi e età in ordine decrescente in base all'età");
+                Console.WriteLine("0: fine del programma");
+                Console.Write("Che operazione vuoi eseguire: ");
+                scelta = Convert.ToInt32(Console.ReadLine());
 
+                switch (scelta)
+                {
+                    case 1:
+                        Statistiche(ref pesi, ref media, ref min, ref max);
+                        Console.WriteLine($"La media dei pesi è {media}, il valore minimo è {min} e il valore massimo {max}");
+                        break;
+                    case 2:
+                        Ordina(ref pesi, ref eta);
+                        for (int i = 0; i < dim; i++)
+                        {
+                            Console.WriteLine($"età della persona {i + 1}: {eta[i]}");
+                            Console.WriteLine($"peso della persona {i + 1}: {pesi[i]}\n");
+                        }
+                        break;
+                }
+            } while (scelta != 0);
         }
         static void CaricaVettori(ref double[] pesi,ref int[] eta)
         {
@@ -67,9 +79,6 @@
                         tempEta = eta[j];
                         eta[j] = eta[j + 1];
                         eta[j+1] = tempEta;
-                    }
-                    if (pesi[j] < pesi[j + 1])
-                    {
                         tempPesi = pesi[j];
                         pesi[j] = pesi[j + 1];
                         pesi[j + 1] = tempPesi;
