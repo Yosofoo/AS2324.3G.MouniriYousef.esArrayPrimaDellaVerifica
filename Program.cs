@@ -41,16 +41,23 @@
         }
         static void Ordina(ref double[] pesi, ref int[] eta)
         {
-            int min;
+            double tempPesi;
+            int tempEta;
             for (int i = 0;i < eta.Length - 1; i++)
             {
                 for(int j = 0; j < eta.Length - i - 1; j++)
                 {
-                    if (eta[j] < pesi[j + 1])
+                    if (eta[j] < eta[j + 1])
                     {
-                        min = eta[j];
+                        tempEta = eta[j];
                         eta[j] = eta[j + 1];
-                        eta[j+1] = min;
+                        eta[j+1] = tempEta;
+                    }
+                    if (pesi[j] < pesi[j + 1])
+                    {
+                        tempPesi = pesi[j];
+                        pesi[j] = pesi[j + 1];
+                        pesi[j + 1] = tempPesi;
                     }
                 }
             }
