@@ -9,6 +9,19 @@
             double[] pesi = new double[dim];
             int[] eta = new int[dim];
             CaricaVettori(ref pesi, ref eta);
+            double media = 0;
+            double min = 0; 
+            double max = 0;
+            
+            Statistiche(ref pesi, ref media, ref min, ref max);
+            Console.WriteLine($"La media dei pesi è {media}, il valore minimo è {min} e il valore massimo {max}");
+
+            Ordina(ref pesi, ref eta);
+            for (int i = 0; i < dim; i++)
+            {
+                Console.WriteLine($"peso {i + 1}: {pesi[i]}");
+                Console.WriteLine($"età {i + 1}: {eta[i]}\n");
+            }
 
         }
         static void CaricaVettori(ref double[] pesi,ref int[] eta)
