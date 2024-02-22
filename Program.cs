@@ -12,7 +12,9 @@
             double media = 0;
             double min = 0; 
             double max = 0;
-            
+            Console.WriteLine("Che operazione vuoi eseguire:");
+            Console.WriteLine("1: Calcolo della media, del valore minimo e massimo tra i pesi");
+            Console.WriteLine("2: Ordinamento dei pesi e età in ordine decrescente");
             Statistiche(ref pesi, ref media, ref min, ref max);
             Console.WriteLine($"La media dei pesi è {media}, il valore minimo è {min} e il valore massimo {max}");
 
