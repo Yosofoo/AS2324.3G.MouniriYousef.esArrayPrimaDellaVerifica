@@ -37,6 +37,23 @@
                     min = pesi[i];
                 }
             }
+            media = somma / pesi.Length;
+        }
+        static void Ordina(ref double[] pesi, ref int[] eta)
+        {
+            int min;
+            for (int i = 0;i < eta.Length - 1; i++)
+            {
+                for(int j = 0; j < eta.Length - i - 1; j++)
+                {
+                    if (eta[j] < pesi[j + 1])
+                    {
+                        min = eta[j];
+                        eta[j] = eta[j + 1];
+                        eta[j+1] = min;
+                    }
+                }
+            }
         }
     }
 }
