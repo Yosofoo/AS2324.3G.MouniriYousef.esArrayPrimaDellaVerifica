@@ -17,9 +17,12 @@
             {
                 Console.WriteLine("1: Calcolo della media, del valore minimo e massimo tra i pesi");
                 Console.WriteLine("2: Ordinamento dei pesi e età in ordine decrescente in base all'età");
+                Console.WriteLine("3: Calcolare le frequenze di ogni peso");
                 Console.WriteLine("0: fine del programma");
                 Console.Write("Che operazione vuoi eseguire: ");
                 scelta = Convert.ToInt32(Console.ReadLine());
+                int[] frequenze = new int[dim];
+                double[] pesiDistinti = new double[dim];
 
                 switch (scelta)
                 {
@@ -33,6 +36,13 @@
                         {
                             Console.WriteLine($"età della persona {i + 1}: {eta[i]}");
                             Console.WriteLine($"peso della persona {i + 1}: {pesi[i]}\n");
+                        }
+                        break;
+                    case 3:
+                        CalcolaFrequenze(pesi, ref frequenze, ref pesiDistinti);
+                        for (int i = 0;i < dim; i++)
+                        {
+                            Console.WriteLine($"Il peso {pesiDistinti[i]} è capitato {frequenze[i]} volta/e");
                         }
                         break;
                 }
@@ -82,6 +92,22 @@
                         tempPesi = pesi[j];
                         pesi[j] = pesi[j + 1];
                         pesi[j + 1] = tempPesi;
+                    }
+                }
+            }
+        }
+        static void CalcolaFrequenze(double[] pesi,ref int[] frequenze, ref double[] pesiDistinti)
+        {
+
+            for(int i = 0; i < pesi.Length; i++)
+            {
+                
+                for (int j = 0;j < pesi.Length; j++)
+                {
+                    if (pesi[j] == pesi[i])
+                    {
+                        pesiDistinti[i] = pesi[i];
+                        frequenze[i]++;
                     }
                 }
             }
